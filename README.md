@@ -5,3 +5,5 @@ The visualization is a volume of cubes, with the X/Y/Z dimensions correspnding w
 The color of a cube corresponds to the solution to the quadratic equation. Red corresponds to the first zero, blue corresponds to the second zero if present, and green corresponds to whether the red and blue solutions are imaginary or not (green=imaginary).
 
 Control the camera with WASD RF and arrow keys to control the cutters to expose the inside of the volume.
+
+it uses bevy to do like everything. we love bevy. yay bevy.
