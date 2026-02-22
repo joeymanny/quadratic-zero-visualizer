@@ -2,6 +2,7 @@ const CAMSPEED: f32 = 40.;
 const COLOR_ADJ: f32 = 1.5;
 const CUTTER_SPEED: f32 = 0.3;
 const CUBE_SIZE: f32 = 0.3;
+const HALF_CUBE_SIDE_LEN: i8 = 20;
 
 use bevy::prelude::*;
 #[derive(Component)]
@@ -173,15 +174,15 @@ fn add_cubes(
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
 ) {
-    for a in -20..20 {
-        for b in -20..20 {
-            for c in -20..20 {
+    for a in -HALF_CUBE_SIDE_LEN..HALF_CUBE_SIDE_LEN {
+        for b in -HALF_CUBE_SIDE_LEN..HALF_CUBE_SIDE_LEN {
+            for c in -HALF_CUBE_SIDE_LEN..HALF_CUBE_SIDE_LEN {
                 let mut red: f32;
                 let green: f32;
                 let mut blue: f32;
                 (red, green, blue) = match solve_quadratic(a as f32, b as f32, c as f32) {
-                    (r1, None) => (r1, 1.0, 1.0),
-                    (r1, Some((r2, imag))) => (r1, if imag { 1.0 } else { 0.0 }, r2),
+                    (root1, None) => (root1, 0.0, 1.0),
+                    (root1, Some((root2, imag))) => (root1, if imag { 1.0 } else { 0.0 }, root2),
                 };
                 (red, blue) = ((red * COLOR_ADJ), (blue * COLOR_ADJ));
                 commands.spawn((
