@@ -174,6 +174,7 @@ fn add_cubes(
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
 ) {
+    let mesh = meshes.add(Cuboid::from_size(Vec3::splat(CUBE_SIZE)));
     for a in -HALF_CUBE_SIDE_LEN..HALF_CUBE_SIDE_LEN {
         for b in -HALF_CUBE_SIDE_LEN..HALF_CUBE_SIDE_LEN {
             for c in -HALF_CUBE_SIDE_LEN..HALF_CUBE_SIDE_LEN {
@@ -187,7 +188,7 @@ fn add_cubes(
                 (red, blue) = ((red * COLOR_ADJ), (blue * COLOR_ADJ));
                 commands.spawn((
                     Transform::from_xyz(a as f32, b as f32, c as f32),
-                    Mesh3d(meshes.add(Cuboid::from_size(Vec3::splat(CUBE_SIZE)))),
+                    Mesh3d(mesh.clone()),
                     MeshMaterial3d(
                         materials.add(StandardMaterial::from_color(Color::LinearRgba(
                             LinearRgba::rgb(red, green, blue),
