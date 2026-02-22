@@ -6,4 +6,4 @@ The color of a cube corresponds to the solution to the quadratic equation. Red c
 
 Control the camera with WASD RF and arrow keys to control the cutters to expose the inside of the volume.
 
-it uses bevy to do like everything. we love bevy. yay bevy.
+it uses bevy to do like everything. we love bevy. yay bevy. it does mean you have to compile an entire game engine if you want to check it out though. sorry.
